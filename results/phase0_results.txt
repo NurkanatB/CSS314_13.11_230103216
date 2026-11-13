@@ -1,0 +1,40 @@
+MODE: FULL
+Student ID: 230103216
+Python: 3.14.5 | OS: Windows-10-10.0.19045-SP0
+Timestamp: 2026-11-13 15:04:26
+
+## Hardware telemetry
+
+| Parameter | Value |
+|---|---|
+| CPU Model | AMD Ryzen 5 4600H with Radeon Graphics |
+| Physical cores (Pphys) | 6 |
+| Logical threads (P_log) | 12 |
+| Cache line size | 64 B |
+| L1d size | 32 KiB |
+| L2 size | 512 KiB |
+| L3 size | 4 MiB |
+| Hybrid (P/E core) CPU | no (single efficiency class) |
+| Python version | 3.14.5 |
+| Operating system | Windows-10-10.0.19045-SP0 |
+
+Pphys used by all later phases: **6**; P_log: **12**.
+Windows efficiency classes reported: [0].
+
+Cache detail as reported by the OS (level/type -> sizes found on this CPU):
+- L1 data: 32 KiB
+- L1 instr: 32 KiB
+- L2 unified: 512 KiB
+- L3 unified: 4 MiB
+
+Notes:
+- Topology source: Win32 GetLogicalProcessorInformationEx (ctypes).
+
+## perf_counter_ns() latency (1,000,000 consecutive calls)
+
+- Gross average per call (loop included): 79.83 ns
+- Empty-loop overhead per iteration: 13.98 ns
+- Net estimated call latency: 65.85 ns
+- Timer resolution is therefore adequate for all measurements below (all >> 1 us).
+
+VERIFY_HASH[PHASE0]=6fb5c37d2e71d7dc

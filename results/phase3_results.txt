@@ -1,0 +1,66 @@
+MODE: FULL
+Student ID: 230103216
+Python: 3.14.5 | OS: Windows-10-10.0.19045-SP0
+Timestamp: 2026-11-13 15:11:16
+
+# Phase 3 - empirical Roofline and GEMM
+
+Pphys = 6 worker processes; warm-up = 1, trials = 5. Pure-Python throughput = application-level ceilings, not native CPU peaks.
+
+## Part 3A - Roofline ceilings
+
+| Quantity | Value |
+|---|---|
+| Buffers | 2 x 64 MB SharedMemory, 6 workers, slice copy |
+| Copy median time (ms) / IQR | 14.806 / 1.118 |
+| Sustained bandwidth BW = 2*size/(T*1e9) | 8.645 GB/s |
+| Copy sanity check (first KiB) | OK |
+| Compute kernel | 16 accumulators, 1,875,000 iterations/worker = 60,000,000 FLOP/worker |
+| Compute median time (ms) / IQR | 1395.793 / 165.844 |
+| Sustained compute P | 0.2579 GFLOP/s (6 workers) |
+| Ridge point I* = P/BW | 0.02983 FLOP/byte |
+
+Interpretation note: the bandwidth comes from memoryview (memcpy-level) copies, whereas the compute ceiling comes from interpreted bytecode, so the ridge point is extremely low compared with native hardware; this is an artefact of Python's interpreter overhead, not of the CPU.
+
+## Part 3B - GEMM (N = 256, double precision, flat buffers, 6 row-partitioned workers)
+
+| Variant | Median (ms) | IQR (ms) | GFLOP/s |
+|---|---|---|---|
+| 1 naive i-j-k | 719.53 | 31.50 | 0.04663 |
+| 2 reordered i-k-j | 852.32 | 31.24 | 0.03937 |
+| 3 blocked, BS* = 96 | 837.58 | 66.47 | 0.04006 |
+
+### Tile-size sweep (Variant 3)
+
+| BS | Median (ms) | IQR (ms) | GFLOP/s | Wtile = 3*BS^2*8 | Itiled ~ BS/12 (FLOP/B) | max abs(C3-C2) | best |
+|---|---|---|---|---|---|---|---|
+| 8 | 959.38 | 5.78 | 0.03498 | 1.5 KiB | 0.67 | 0.00e+00 |  |
+| 16 | 924.75 | 73.03 | 0.03628 | 6 KiB | 1.33 | 0.00e+00 |  |
+| 32 | 889.41 | 15.59 | 0.03773 | 24 KiB | 2.67 | 0.00e+00 |  |
+| 64 | 891.33 | 46.73 | 0.03765 | 96 KiB | 5.33 | 0.00e+00 |  |
+| 96 | 837.58 | 66.47 | 0.04006 | 216 KiB | 8.00 | 0.00e+00 | * |
+| 128 | 864.10 | 25.46 | 0.03883 | 384 KiB | 10.67 | 0.00e+00 |  |
+
+### Numerical verification
+
+- max abs(C_variant1 - C_variant2) = 0.000e+00 -> PASS (< 1e-9)
+- max abs(C_variant3 - C_variant2) over all BS: 0.000e+00 -> PASS (< 1e-9)
+
+### Optimal tile size: BS* = 96 (highest measured GFLOP/s)
+
+- L1d = 32 KiB: Wtile(BS*) = 216 KiB (does NOT fit; 675.0% of capacity).
+- L2 = 512 KiB: Wtile(BS*) = 216 KiB (fits; 42.2% of capacity).
+
+### Roofline mapping
+
+| Variant | Assumed I (FLOP/B) | Roof = min(P, I*BW) GFLOP/s | Measured GFLOP/s | % of P_sustained |
+|---|---|---|---|---|
+| 1 naive | 0.125 | 0.2579 | 0.04663 | 18.08% |
+| 2 reordered | 0.083 | 0.2579 | 0.03937 | 15.26% |
+| 3 blocked BS*=96 | 8.000 | 0.2579 | 0.04006 | 15.53% |
+
+Assumed intensities: naive = 2 FLOP / 16 B (A and B streamed, no reuse); reordered = 2 FLOP / 24 B (B load + C load/store, a_ik in register); blocked = BS/12 as given. Replace if your handout defines others.
+Ridge point I* = 0.02983 FLOP/B. All assumed intensities lie to the right of the ridge (compute-bound region): measured performance is limited by the interpreter's compute rate, not by memory bandwidth.
+
+
+VERIFY_HASH[PHASE3]=fef4c2981dbf8a2a

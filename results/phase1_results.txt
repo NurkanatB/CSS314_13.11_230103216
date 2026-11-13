@@ -1,0 +1,48 @@
+MODE: FULL
+Student ID: 230103216
+Python: 3.14.5 | OS: Windows-10-10.0.19045-SP0
+Timestamp: 2026-11-13 15:07:39
+
+# Phase 1 - false sharing and Karp-Flatt
+
+Pphys = 6, P_log = 12, total operations M = 16,000,000 (split evenly across p workers), warm-up = 1, trials = 5. Shared block: 4096 bytes = 512 uint64 slots; worker w uses slot w*stride.
+
+## Stride sweep (p = Pphys = 6)
+
+| Stride (slots) | Median (ms) | IQR (ms) | Throughput (Mops/s) | Distance between workers |
+|---|---|---|---|---|
+| 1 | 1285.21 | 48.19 | 12.45 | 8 B |
+| 2 | 1197.43 | 47.02 | 13.36 | 16 B |
+| 4 | 1067.74 | 24.39 | 14.98 | 32 B |
+| 8 | 979.13 | 46.15 | 16.34 | 64 B |
+| 16 | 997.87 | 29.17 | 16.03 | 128 B |
+| 32 | 976.73 | 58.96 | 16.38 | 256 B |
+
+Key findings:
+- First stride with >=15% lower median time than stride 1: stride 4 (1067.74 ms vs 1285.21 ms).
+- Fastest stride overall: 32 (976.73 ms).
+
+## Process scaling (fixed total M)
+
+### stride = 1
+
+| p | Median (ms) | IQR (ms) | Speedup Sp | Efficiency Ep | Karp-Flatt e(p) |
+|---|---|---|---|---|---|
+| 1 | 4169.62 | 94.33 | 1.000 | 1.000 | n/a |
+| 2 | 2501.38 | 25.11 | 1.667 | 0.833 | 0.1998 |
+| 4 | 1622.44 | 45.76 | 2.570 | 0.642 | 0.1855 |
+| 8 | 1059.07 | 0.21 | 3.937 | 0.492 | 0.1474 |
+| 12 | 762.47 | 12.01 | 5.469 | 0.456 | 0.1086 |
+
+### stride = 16
+
+| p | Median (ms) | IQR (ms) | Speedup Sp | Efficiency Ep | Karp-Flatt e(p) |
+|---|---|---|---|---|---|
+| 1 | 4369.41 | 127.48 | 1.000 | 1.000 | n/a |
+| 2 | 2361.68 | 131.41 | 1.850 | 0.925 | 0.0810 |
+| 4 | 1416.19 | 9.47 | 3.085 | 0.771 | 0.0988 |
+| 8 | 796.32 | 24.26 | 5.487 | 0.686 | 0.0654 |
+| 12 | 614.30 | 18.46 | 7.113 | 0.593 | 0.0625 |
+
+
+VERIFY_HASH[PHASE1]=aa9485fb936b111f
