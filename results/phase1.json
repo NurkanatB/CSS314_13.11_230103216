@@ -1,0 +1,256 @@
+{
+  "phase": 1,
+  "mode": "full",
+  "timestamp_utc": "2026-11-13T05:18:31Z",
+  "parameters": {
+    "M": 24000000,
+    "warmup": 2,
+    "timed": 7,
+    "P_phys": 6,
+    "P_log": 12,
+    "p_values": [
+      1,
+      2,
+      4,
+      6,
+      8,
+      12
+    ],
+    "strides": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32
+    ],
+    "shm_bytes": 4096,
+    "time_basis": "max worker loop time after a start barrier (kernel time)"
+  },
+  "table_1a": [
+    {
+      "p": 6,
+      "stride": 1,
+      "byte_separation": 8,
+      "iters_per_worker": 4000000,
+      "total_ops": 24000000,
+      "median_ms": 1430.7762,
+      "iqr_ms": 137.42090000000007,
+      "min_ms": 1361.5296,
+      "max_ms": 1551.284,
+      "throughput_mops": 16.774111842229413,
+      "wall_median_ms": 1662.2114,
+      "values_consistent": true
+    },
+    {
+      "p": 6,
+      "stride": 2,
+      "byte_separation": 16,
+      "iters_per_worker": 4000000,
+      "total_ops": 24000000,
+      "median_ms": 1589.476,
+      "iqr_ms": 104.1110000000001,
+      "min_ms": 1516.4243,
+      "max_ms": 1663.9332,
+      "throughput_mops": 15.099315749341292,
+      "wall_median_ms": 1859.7817,
+      "values_consistent": true
+    },
+    {
+      "p": 6,
+      "stride": 4,
+      "byte_separation": 32,
+      "iters_per_worker": 4000000,
+      "total_ops": 24000000,
+      "median_ms": 1427.235,
+      "iqr_ms": 92.31560000000013,
+      "min_ms": 1361.7329,
+      "max_ms": 1513.5493,
+      "throughput_mops": 16.815731116459446,
+      "wall_median_ms": 1655.2037,
+      "values_consistent": true
+    },
+    {
+      "p": 6,
+      "stride": 8,
+      "byte_separation": 64,
+      "iters_per_worker": 4000000,
+      "total_ops": 24000000,
+      "median_ms": 1249.2399,
+      "iqr_ms": 69.19589999999994,
+      "min_ms": 1203.3817,
+      "max_ms": 1413.1262,
+      "throughput_mops": 19.211682239736337,
+      "wall_median_ms": 1477.2584,
+      "values_consistent": true
+    },
+    {
+      "p": 6,
+      "stride": 16,
+      "byte_separation": 128,
+      "iters_per_worker": 4000000,
+      "total_ops": 24000000,
+      "median_ms": 1360.1516,
+      "iqr_ms": 52.56770000000006,
+      "min_ms": 1295.6632,
+      "max_ms": 1430.3256,
+      "throughput_mops": 17.64509191475421,
+      "wall_median_ms": 1613.6676,
+      "values_consistent": true
+    },
+    {
+      "p": 6,
+      "stride": 32,
+      "byte_separation": 256,
+      "iters_per_worker": 4000000,
+      "total_ops": 24000000,
+      "median_ms": 1423.5845,
+      "iqr_ms": 156.73900000000003,
+      "min_ms": 1224.5246,
+      "max_ms": 1480.66,
+      "throughput_mops": 16.858851722535615,
+      "wall_median_ms": 1667.9491,
+      "values_consistent": true
+    }
+  ],
+  "table_1b": {
+    "stride_1": [
+      {
+        "p": 1,
+        "median_ms": 6390.3349,
+        "iqr_ms": 41.115499999999884,
+        "speedup": 1.0,
+        "efficiency": 1.0,
+        "karp_flatt": null,
+        "values_consistent": true
+      },
+      {
+        "p": 2,
+        "median_ms": 3664.6491,
+        "iqr_ms": 117.70980000000009,
+        "speedup": 1.7437781150724634,
+        "efficiency": 0.8718890575362317,
+        "karp_flatt": 0.1469349125974604,
+        "values_consistent": true
+      },
+      {
+        "p": 4,
+        "median_ms": 1978.9746,
+        "iqr_ms": 92.14159999999993,
+        "speedup": 3.2291141584131497,
+        "efficiency": 0.8072785396032874,
+        "karp_flatt": 0.07957660664492978,
+        "values_consistent": true
+      },
+      {
+        "p": 6,
+        "median_ms": 1504.6036,
+        "iqr_ms": 157.0675000000001,
+        "speedup": 4.247188362436458,
+        "efficiency": 0.7078647270727431,
+        "karp_flatt": 0.08253985874824811,
+        "values_consistent": true
+      },
+      {
+        "p": 8,
+        "median_ms": 1324.5975,
+        "iqr_ms": 44.36380000000008,
+        "speedup": 4.824359777215342,
+        "efficiency": 0.6030449721519178,
+        "karp_flatt": 0.0940358741717009,
+        "values_consistent": true
+      },
+      {
+        "p": 12,
+        "median_ms": 1006.6176,
+        "iqr_ms": 13.661699999999996,
+        "speedup": 6.348324229578342,
+        "efficiency": 0.5290270191315285,
+        "karp_flatt": 0.08093296558611579,
+        "values_consistent": true
+      }
+    ],
+    "stride_16": [
+      {
+        "p": 1,
+        "median_ms": 6358.8529,
+        "iqr_ms": 175.9386000000004,
+        "speedup": 1.0,
+        "efficiency": 1.0,
+        "karp_flatt": null,
+        "values_consistent": true
+      },
+      {
+        "p": 2,
+        "median_ms": 3249.5604,
+        "iqr_ms": 70.38120000000026,
+        "speedup": 1.9568348075635094,
+        "efficiency": 0.9784174037817547,
+        "karp_flatt": 0.02205867979742071,
+        "values_consistent": true
+      },
+      {
+        "p": 4,
+        "median_ms": 1645.159,
+        "iqr_ms": 58.5286000000001,
+        "speedup": 3.8651904770298793,
+        "efficiency": 0.9662976192574698,
+        "karp_flatt": 0.01162594907644432,
+        "values_consistent": true
+      },
+      {
+        "p": 6,
+        "median_ms": 1285.5536,
+        "iqr_ms": 131.7367999999999,
+        "speedup": 4.946392666941309,
+        "efficiency": 0.8243987778235514,
+        "karp_flatt": 0.04260103893895704,
+        "values_consistent": true
+      },
+      {
+        "p": 8,
+        "median_ms": 1246.6084,
+        "iqr_ms": 65.68669999999997,
+        "speedup": 5.100922551139556,
+        "efficiency": 0.6376153188924445,
+        "karp_flatt": 0.0811919642209143,
+        "values_consistent": true
+      },
+      {
+        "p": 12,
+        "median_ms": 996.5517,
+        "iqr_ms": 45.77460000000008,
+        "speedup": 6.380856005764678,
+        "efficiency": 0.5317380004803899,
+        "karp_flatt": 0.08005685628099257,
+        "values_consistent": true
+      }
+    ]
+  },
+  "inflection": {
+    "from_stride": 4,
+    "to_stride": 8,
+    "from_bytes": 32,
+    "to_bytes": 64,
+    "ratio": 0.8752867607646955,
+    "drop_percent": 12.471323923530452,
+    "found": false
+  },
+  "observations": [
+    "No precipitous drop observed: the largest step is only 12% (stride 4 -> 8). In pure Python the interpreter overhead per iteration can hide coherence traffic; report this honestly instead of forcing a conclusion.",
+    "At p=6: stride=1 median 1430.78 ms vs stride=16 median 1360.15 ms (ratio 1.05x).",
+    "stride_1: e(p) goes from 0.1469 at p=2 to 0.0809 at p=12.",
+    "stride_16: e(p) goes from 0.0221 at p=2 to 0.0801 at p=12."
+  ],
+  "skipped": [],
+  "verify": {
+    "task_id": "PHASE1",
+    "student_seed": 230103216,
+    "p_log": 12,
+    "metric1": 1430.7762,
+    "metric2": 1360.1516,
+    "payload": "PHASE1|230103216|12|1430.7762|1360.1516",
+    "hash": "91CF07A3D6A188D7",
+    "tag": "VERIFY_HASH[PHASE1]: 91CF07A3D6A188D7 (P_log=12)"
+  }
+}

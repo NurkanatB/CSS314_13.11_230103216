@@ -1,0 +1,207 @@
+{
+  "phase": 4,
+  "mode": "full",
+  "timestamp_utc": "2026-11-13T05:34:25Z",
+  "parameters": {
+    "N": 12000,
+    "workers": 6,
+    "warmup": 1,
+    "timed": 3,
+    "chunk_sizes": [
+      1,
+      4,
+      16,
+      64,
+      256,
+      1024
+    ],
+    "total_iterations": 159986539
+  },
+  "rows": [
+    {
+      "strategy": "block",
+      "chunk": null,
+      "twall_median_ms": 18957.9325,
+      "twall_iqr_ms": 467.21020000000135,
+      "twall_min_ms": 18944.1989,
+      "twall_max_ms": 19411.4091,
+      "lambda_median": 2.4858098766112895,
+      "lambda_max": 2.4955036136693383,
+      "worker_ms_last_run": [
+        209.1303,
+        1513.4213,
+        4184.579,
+        7784.33,
+        12601.3508,
+        18722.7489
+      ],
+      "mean_idle_ms": 11220.155516666666,
+      "checksum": 240445055.25401732,
+      "label": "Strategy 1: contiguous block"
+    },
+    {
+      "strategy": "cyclic",
+      "chunk": null,
+      "twall_median_ms": 9119.2622,
+      "twall_iqr_ms": 559.2883999999995,
+      "twall_min_ms": 9095.843,
+      "twall_max_ms": 9655.1314,
+      "lambda_median": 1.0278596751368538,
+      "lambda_max": 1.0293525478391627,
+      "worker_ms_last_run": [
+        9285.7234,
+        9432.2056,
+        9211.9765,
+        9299.8456,
+        8962.4005,
+        9039.8226
+      ],
+      "mean_idle_ms": 226.8765666666659,
+      "checksum": 240445055.2540174,
+      "label": "Strategy 2: cyclic"
+    },
+    {
+      "strategy": "dynamic",
+      "chunk": 1,
+      "twall_median_ms": 8883.6727,
+      "twall_iqr_ms": 695.0682000000015,
+      "twall_min_ms": 8855.8512,
+      "twall_max_ms": 9550.9194,
+      "lambda_median": 1.0009698341153872,
+      "lambda_max": 1.001414774141265,
+      "worker_ms_last_run": [
+        9310.3676,
+        9307.4782,
+        9315.4454,
+        9310.1914,
+        9305.0791,
+        9289.9566
+      ],
+      "mean_idle_ms": 9.02568333333511,
+      "checksum": 240445055.25401744,
+      "label": "Strategy 3: dynamic C=1"
+    },
+    {
+      "strategy": "dynamic",
+      "chunk": 4,
+      "twall_median_ms": 9767.1399,
+      "twall_iqr_ms": 146.6911,
+      "twall_min_ms": 9620.6395,
+      "twall_max_ms": 9767.3306,
+      "lambda_median": 1.0028760237560244,
+      "lambda_max": 1.0030236939130177,
+      "worker_ms_last_run": [
+        9485.0865,
+        9517.1285,
+        9487.0949,
+        9478.2265,
+        9482.1439,
+        9480.9499
+      ],
+      "mean_idle_ms": 28.690133333333506,
+      "checksum": 240445055.2540174,
+      "label": "Strategy 3: dynamic C=4"
+    },
+    {
+      "strategy": "dynamic",
+      "chunk": 16,
+      "twall_median_ms": 10601.0235,
+      "twall_iqr_ms": 1051.9968000000008,
+      "twall_min_ms": 9680.2163,
+      "twall_max_ms": 10732.2131,
+      "lambda_median": 1.0043345109375987,
+      "lambda_max": 1.0076613536689125,
+      "worker_ms_last_run": [
+        9445.8084,
+        9459.2069,
+        9411.2926,
+        9432.2802,
+        9336.1513,
+        9425.5575
+      ],
+      "mean_idle_ms": 40.824083333332965,
+      "checksum": 240445055.2540174,
+      "label": "Strategy 3: dynamic C=16"
+    },
+    {
+      "strategy": "dynamic",
+      "chunk": 64,
+      "twall_median_ms": 10527.2161,
+      "twall_iqr_ms": 1481.9490000000005,
+      "twall_min_ms": 9413.1161,
+      "twall_max_ms": 10895.0651,
+      "lambda_median": 1.022730085878491,
+      "lambda_max": 1.0305630895134537,
+      "worker_ms_last_run": [
+        9161.7213,
+        8981.4809,
+        8761.5453,
+        9193.7643,
+        8965.5351,
+        8872.5553
+      ],
+      "mean_idle_ms": 204.33060000000114,
+      "checksum": 240445055.25401744,
+      "label": "Strategy 3: dynamic C=64"
+    },
+    {
+      "strategy": "dynamic",
+      "chunk": 256,
+      "twall_median_ms": 10104.2264,
+      "twall_iqr_ms": 600.6192999999985,
+      "twall_min_ms": 9802.1334,
+      "twall_max_ms": 10402.7527,
+      "lambda_median": 1.0974757586507564,
+      "lambda_max": 1.1008560425462233,
+      "worker_ms_last_run": [
+        9132.2425,
+        9878.0646,
+        8076.2511,
+        8424.4232,
+        8872.5345,
+        9734.6772
+      ],
+      "mean_idle_ms": 858.3657500000008,
+      "checksum": 240445055.2540174,
+      "label": "Strategy 3: dynamic C=256"
+    },
+    {
+      "strategy": "dynamic",
+      "chunk": 1024,
+      "twall_median_ms": 12292.763,
+      "twall_iqr_ms": 527.2453000000005,
+      "twall_min_ms": 12088.7811,
+      "twall_max_ms": 12616.0264,
+      "lambda_median": 1.3961603315072082,
+      "lambda_max": 1.4280928261311774,
+      "worker_ms_last_run": [
+        6071.9809,
+        8057.1577,
+        4690.5431,
+        9625.6901,
+        12045.357,
+        11492.4534
+      ],
+      "mean_idle_ms": 3381.4933,
+      "checksum": 240445055.25401744,
+      "label": "Strategy 3: dynamic C=1024"
+    }
+  ],
+  "c_star": 1,
+  "checksum_consistent": true,
+  "observations": [
+    "Static block: Twall 18958 ms, lambda 2.486; cyclic: Twall 9119 ms, lambda 1.028.",
+    "Dynamic sweep: best chunk C* = 1 (Twall 8884 ms, lambda 1.001); C=1 lambda 1.001, C=1024 lambda 1.396.",
+    "Speedup of Strategy 3 (C*) over Strategy 1: 2.13x."
+  ],
+  "verify": {
+    "task_id": "PHASE4",
+    "student_seed": 230103216,
+    "p_log": 12,
+    "metric1": 18957.9325,
+    "metric2": 8883.6727,
+    "payload": "PHASE4|230103216|12|18957.9325|8883.6727",
+    "hash": "98B2353DB9CFF899",
+    "tag": "VERIFY_HASH[PHASE4]: 98B2353DB9CFF899 (P_log=12)"
+  }
+}

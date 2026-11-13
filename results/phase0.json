@@ -1,0 +1,65 @@
+{
+  "lab": "Performance Evaluation and Optimization in Parallel Computing",
+  "phase": 0,
+  "mode": "full",
+  "timestamp_utc": "2026-11-13T05:11:24Z",
+  "student_seed": 230103216,
+  "hardware": {
+    "os": "Windows 10",
+    "python_os": "Python 3.14.5 / Windows 10",
+    "cpu_model": "AMD Ryzen 5 4600H with Radeon Graphics",
+    "physical_cores": 6,
+    "logical_threads": 12,
+    "cache_line_bytes": 64,
+    "l1d_kb": 32.0,
+    "l2_kb": 512.0,
+    "l3_mb": 4.0,
+    "sources": {
+      "cpu_model": "PowerShell Win32_Processor",
+      "physical_cores": "PowerShell Win32_Processor",
+      "logical_threads": "PowerShell Win32_Processor",
+      "l1d_kb": "kernel32 GetLogicalProcessorInformation",
+      "l2_kb": "kernel32 GetLogicalProcessorInformation",
+      "l3_mb": "kernel32 GetLogicalProcessorInformation",
+      "cache_line_bytes": "kernel32 GetLogicalProcessorInformation"
+    },
+    "notes": [
+      "WMI L2CacheSize (often package total across cores) = 3072 KB"
+    ]
+  },
+  "timer": {
+    "clock_reads": 2000000,
+    "clock_loop_stats": {
+      "min_ms": 147.6905,
+      "median_ms": 147.9594,
+      "iqr_ms": 0.8463000000000136,
+      "max_ms": 154.0407
+    },
+    "empty_loop_stats": {
+      "min_ms": 25.7877,
+      "median_ms": 26.2005,
+      "iqr_ms": 4.310399999999998,
+      "max_ms": 37.5725
+    },
+    "avg_call_latency_ns": 73.9797,
+    "loop_overhead_ns": 13.10025,
+    "loop_corrected_latency_ns": 60.87944999999999,
+    "resolution": {
+      "samples": 200000,
+      "min_positive_delta_ns": 100,
+      "median_delta_ns": 100,
+      "zero_delta_fraction": 0.0
+    }
+  },
+  "verify": {
+    "task_id": "PHASE0",
+    "student_seed": 230103216,
+    "p_log": 12,
+    "metric1": 73.9797,
+    "metric2": 6.0,
+    "payload": "PHASE0|230103216|12|73.9797|6.0000",
+    "hash": "BC1EB4EC8F1F8CC3",
+    "tag": "VERIFY_HASH[PHASE0]: BC1EB4EC8F1F8CC3 (P_log=12)"
+  },
+  "hash_inputs_note": "metric1 = raw avg perf_counter_ns() latency (ns); metric2 = physical cores"
+}

@@ -1,4 +1,10 @@
 __pycache__/
 *.pyc
+<<<<<<< HEAD
 .idea/
 .venv/
+=======
+.venv/
+venv/
+.idea/
+>>>>>>> f97e06c228e1d76b428cbcabc9202be9465db2b5
