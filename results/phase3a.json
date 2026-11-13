@@ -1,0 +1,84 @@
+{
+  "phase": "3A",
+  "mode": "full",
+  "timestamp_utc": "2026-11-13T05:26:26Z",
+  "parameters": {
+    "P_phys": 6,
+    "buffer_bytes": 96000000,
+    "flop_per_worker_requested": 80000000.0,
+    "bw_warmup": 3,
+    "bw_timed": 15,
+    "compute_warmup": 1,
+    "compute_timed": 7,
+    "spec_note": "handout 8.0e7 FLOP/worker vs master prompt 80,000,000 iterations: handout used"
+  },
+  "bandwidth": {
+    "buffer_bytes": 96000000,
+    "workers": 6,
+    "stats": {
+      "min_ms": 9.9667,
+      "median_ms": 13.26,
+      "iqr_ms": 3.126099999999999,
+      "max_ms": 14.5482
+    },
+    "median_of_worker_median_ms": 9.974900000000002,
+    "bandwidth_gbs": 14.479638009049774,
+    "copy_verified": true,
+    "trials_ms": [
+      13.4497,
+      14.5482,
+      13.4445,
+      13.307,
+      13.26,
+      13.3158,
+      10.0486,
+      12.9737,
+      13.5299,
+      10.2255,
+      11.0861,
+      11.5916,
+      9.9667,
+      13.7453,
+      10.3236
+    ]
+  },
+  "compute": {
+    "workers": 6,
+    "passes_per_worker": 2500000,
+    "flop_per_worker": 80000000,
+    "stats": {
+      "min_ms": 1246.1167,
+      "median_ms": 1273.4297,
+      "iqr_ms": 84.12560000000008,
+      "max_ms": 1381.6
+    },
+    "gflops": 0.3769348241210332,
+    "checksum_workers": [
+      1.698501875214119,
+      1.698501875214119,
+      1.698501875214119,
+      1.698501875214119,
+      1.698501875214119,
+      1.698501875214119
+    ],
+    "trials_ms": [
+      1298.2427,
+      1350.3077,
+      1381.6,
+      1246.1167,
+      1273.4297,
+      1266.1821,
+      1267.0791
+    ]
+  },
+  "bw_sustained_gbs": 14.479638009049774,
+  "p_sustained_gflops": 0.3769348241210332,
+  "ridge_point_flop_per_byte": 0.026032061290858853,
+  "limitations": [
+    "FLOPs are counted by statement (mul+add = 2 FLOP), not measured by hardware counters.",
+    "CPython executes ~tens of ns per bytecode-level operation, so P_sustained measures INTERPRETER dispatch throughput, orders of magnitude below the silicon's FMA peak; the 'roofline' is an interpreter roofline.",
+    "Bandwidth uses native memcpy (memoryview slice copy) and is therefore a true memory-system measurement, while the compute ceiling is not - the two ceilings come from different 'machines'.",
+    "Write-allocate traffic is not counted in BW (handout definition: 2 bytes per byte copied).",
+    "Time per trial is max over workers of in-worker time after a start barrier; dispatch overhead excluded."
+  ]
+}
